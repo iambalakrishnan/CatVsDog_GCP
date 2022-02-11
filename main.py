@@ -18,13 +18,13 @@ class ClientApp:
         self.classifier = dogcat(self.filename)
 
 
-@application.route("/", methods=['GET'])
+@app.route("/", methods=['GET'])
 @cross_origin()
 def home():
     return render_template('index.html')
 
 
-@application.route("/predict", methods=['POST'])
+@app.route("/predict", methods=['POST'])
 @cross_origin()
 def predictRoute():
     image = request.json['image']
@@ -34,6 +34,4 @@ def predictRoute():
 
 
 if __name__ == "__main__":
-    clApp = ClientApp()
-    #application.run(debug=True)
     app.run(host='127.0.0.1', port=8080, debug=True)
